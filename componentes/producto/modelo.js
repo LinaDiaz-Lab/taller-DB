@@ -1,25 +1,16 @@
 const mongoose = require('mongoose')
 
-const ropaSchema = new mongoose.Schema({
-    nombreProducto: String,
-    marca: String,
-    precio: Number
+const productoSchema = new mongoose.Schema({
+    image:{type: String, required: true},// se guarda una ruta http://localhost:2500/publico/fondo.jpg
+    productName: {type: String, required: true},
+    description: {type: String, required: true},
+    price: {type: Number, required: false},
+    category: {type: String, required: true},
+}, {
+    timestamps: true
 })
 
 //nombre de la coleccion y el esquema que creamos
-const producto = mongoose.model('productos', ropaSchema)
+const producto = mongoose.model('productos', productoSchema)
 
 module.exports = producto
-/*
-const manyclothes =  [
-    { nombreProducto: 'camisa', marca: 'Kenso' },
-    { nombreProducto: 'pantalon', marca: 'Sevilla' },
-    { nombreProducto: 'blusa', marca: 'Kenso' },
-    { nombreProducto: 'falda', marca: 'Koaj' },
-]
-
-producto.insertMany(manyclothes, (error, productosRegistrados) => {
-    console.log('error', error)
-    console.log('productosRegistrados', productosRegistrados)
-})
-*/
